@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>
+    Schedule tasks
+    <a href="/schedule_tasks/new" class="btn btn-lg btn-success">New Schedule task</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Belief</th>
+        <th>User</th>
+        <th>Target people</th>
+        <th>Scheduled datetime</th>
+        <th>Completion datetime</th>
+        <th>Body</th>
+        <th>Complete</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @schedule_tasks.each do |schedule_task| %>
+      <tr>
+        <td><%= schedule_task.belief_id %></td>
+        <td><%= schedule_task.user_id %></td>
+        <td><%= schedule_task.target_people_id %></td>
+        <td><%= schedule_task.scheduled_datetime %></td>
+        <td><%= schedule_task.completion_datetime %></td>
+        <td><%= schedule_task.body %></td>
+        <td><%= schedule_task.complete %></td>
+        <td>
+          <a href="/schedule_tasks/<%= schedule_task.id %>" class="btn btn-primary">Show</a>
+          <a href="/schedule_tasks/<%= schedule_task.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_schedule_task/<%= schedule_task.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<!-- Validation failure messages -->
+<% if @review_task.errors.any? %>
+  <% @review_task.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Review Task #<%= @review_task.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_review_task/<%= @review_task.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for belief_id -->
+      <div class="form-group">
+        <label for="belief_id" class="control-label">
+          Belief
+        </label>
+
+        <input type="text" id="belief_id" name="belief_id" placeholder="Belief" class="form-control" value="<%= @review_task.belief_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @review_task.user_id %>">
+      </div>
+
+      <!-- Label and input for target_people_id -->
+      <div class="form-group">
+        <label for="target_people_id" class="control-label">
+          Target people
+        </label>
+
+        <input type="text" id="target_people_id" name="target_people_id" placeholder="Target people" class="form-control" value="<%= @review_task.target_people_id %>">
+      </div>
+
+      <!-- Label and input for scheduled_datetime -->
+      <div class="form-group">
+        <label for="scheduled_datetime" class="control-label">
+          Scheduled datetime
+        </label>
+
+        <input type="text" id="scheduled_datetime" name="scheduled_datetime" placeholder="Scheduled datetime" class="form-control" value="<%= @review_task.scheduled_datetime %>">
+      </div>
+
+      <!-- Label and input for completion_datetime -->
+      <div class="form-group">
+        <label for="completion_datetime" class="control-label">
+          Completion datetime
+        </label>
+
+        <input type="text" id="completion_datetime" name="completion_datetime" placeholder="Completion datetime" class="form-control" value="<%= @review_task.completion_datetime %>">
+      </div>
+
+      <!-- Label and input for body -->
+      <div class="form-group">
+        <label for="body" class="control-label">
+          Body
+        </label>
+
+        <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @review_task.body %></textarea>
+      </div>
+
+      <!-- Label and input for complete -->
+      <div class="checkbox">
+        <label for="complete">
+          <input type="checkbox" id="complete" name="complete" value="1" <%= "checked" if @review_task.complete %>>
+          Complete
+        </label>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Review Task
+      </button>
+      or
+      <a href="/review_tasks/<%= @review_task.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

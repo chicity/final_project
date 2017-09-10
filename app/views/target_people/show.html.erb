@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Target Person #<%= @target_person.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Person</dt>
+      <dd><%= @target_person.person_id %></dd>
+
+      <dt>User</dt>
+      <dd><%= @target_person.user_id %></dd>
+
+      <dt>Belief</dt>
+      <dd><%= @target_person.belief_id %></dd>
+
+      <dt>Priority order</dt>
+      <dd><%= @target_person.priority_order %></dd>
+
+      <dt>Rationale</dt>
+      <dd><%= @target_person.rationale %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/target_people" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/target_people/<%= @target_person.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_target_person/<%= @target_person.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>
+    Meet tasks
+    <a href="/meet_tasks/new" class="btn btn-lg btn-success">New Meet task</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Belief</th>
+        <th>User</th>
+        <th>Target people</th>
+        <th>Scheduled datetime</th>
+        <th>Completion datetime</th>
+        <th>Body</th>
+        <th>Complete</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @meet_tasks.each do |meet_task| %>
+      <tr>
+        <td><%= meet_task.belief_id %></td>
+        <td><%= meet_task.user_id %></td>
+        <td><%= meet_task.target_people_id %></td>
+        <td><%= meet_task.scheduled_datetime %></td>
+        <td><%= meet_task.completion_datetime %></td>
+        <td><%= meet_task.body %></td>
+        <td><%= meet_task.complete %></td>
+        <td>
+          <a href="/meet_tasks/<%= meet_task.id %>" class="btn btn-primary">Show</a>
+          <a href="/meet_tasks/<%= meet_task.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_meet_task/<%= meet_task.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

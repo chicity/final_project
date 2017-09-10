@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>
+    Target people
+    <a href="/target_people/new" class="btn btn-lg btn-success">New Target person</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Person</th>
+        <th>User</th>
+        <th>Belief</th>
+        <th>Priority order</th>
+        <th>Rationale</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @target_people.each do |target_person| %>
+      <tr>
+        <td><%= target_person.person_id %></td>
+        <td><%= target_person.user_id %></td>
+        <td><%= target_person.belief_id %></td>
+        <td><%= target_person.priority_order %></td>
+        <td><%= target_person.rationale %></td>
+        <td>
+          <a href="/target_people/<%= target_person.id %>" class="btn btn-primary">Show</a>
+          <a href="/target_people/<%= target_person.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_target_person/<%= target_person.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Belief #<%= @belief.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>User</dt>
+      <dd><%= @belief.user_id %></dd>
+
+      <dt>Org</dt>
+      <dd><%= @belief.org_id %></dd>
+
+      <dt>Body</dt>
+      <dd><%= @belief.body %></dd>
+
+      <dt>Priority order</dt>
+      <dd><%= @belief.priority_order %></dd>
+
+      <dt>Confirmed status</dt>
+      <dd><%= @belief.confirmed_status %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/beliefs" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/beliefs/<%= @belief.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_belief/<%= @belief.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

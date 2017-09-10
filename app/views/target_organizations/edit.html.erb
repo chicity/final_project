@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @target_organization.errors.any? %>
+  <% @target_organization.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Target Organization #<%= @target_organization.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_target_organization/<%= @target_organization.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @target_organization.user_id %>">
+      </div>
+
+      <!-- Label and input for org_id -->
+      <div class="form-group">
+        <label for="org_id" class="control-label">
+          Org
+        </label>
+
+        <input type="text" id="org_id" name="org_id" placeholder="Org" class="form-control" value="<%= @target_organization.org_id %>">
+      </div>
+
+      <!-- Label and input for priority_order -->
+      <div class="form-group">
+        <label for="priority_order" class="control-label">
+          Priority order
+        </label>
+
+        <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<%= @target_organization.priority_order %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Target Organization
+      </button>
+      or
+      <a href="/target_organizations/<%= @target_organization.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810230637) do
+ActiveRecord::Schema.define(version: 20170910192914) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +41,130 @@ ActiveRecord::Schema.define(version: 20170810230637) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "beliefs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "org_id"
+    t.text "body"
+    t.integer "priority_order"
+    t.boolean "confirmed_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_tasks", force: :cascade do |t|
+    t.integer "belief_id"
+    t.integer "user_id"
+    t.integer "target_people_id"
+    t.datetime "scheduled_datetime"
+    t.datetime "completion_datetime"
+    t.text "body"
+    t.boolean "complete", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meet_tasks", force: :cascade do |t|
+    t.integer "belief_id"
+    t.integer "user_id"
+    t.integer "target_people_id"
+    t.datetime "scheduled_datetime"
+    t.datetime "completion_datetime"
+    t.text "body"
+    t.boolean "complete", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "org_name"
+    t.string "org_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "linkedin_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prep_tasks", force: :cascade do |t|
+    t.integer "belief_id"
+    t.integer "user_id"
+    t.integer "target_people_id"
+    t.datetime "scheduled_datetime"
+    t.datetime "completion_datetime"
+    t.text "body"
+    t.boolean "complete", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "review_tasks", force: :cascade do |t|
+    t.integer "belief_id"
+    t.integer "user_id"
+    t.integer "target_people_id"
+    t.datetime "scheduled_datetime"
+    t.datetime "completion_datetime"
+    t.text "body"
+    t.boolean "complete", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedule_tasks", force: :cascade do |t|
+    t.integer "belief_id"
+    t.integer "user_id"
+    t.integer "target_people_id"
+    t.datetime "scheduled_datetime"
+    t.datetime "completion_datetime"
+    t.text "body"
+    t.boolean "complete", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "target_organizations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "org_id"
+    t.integer "priority_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "target_people", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "user_id"
+    t.integer "belief_id"
+    t.integer "priority_order"
+    t.text "rationale"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "advisor_id"
+    t.integer "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
