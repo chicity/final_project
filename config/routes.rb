@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root 'organizations#index'
+  
   # Routes for the Review_task resource:
   # CREATE
   get "/review_tasks/new", :controller => "review_tasks", :action => "new"
