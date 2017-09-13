@@ -71,3 +71,5 @@ end
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'devise', github: 'plataformatec/devise'
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'font-awesome-sass', '~> 4.7.0'
