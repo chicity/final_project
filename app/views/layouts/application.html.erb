@@ -4,60 +4,80 @@
   <meta charset="utf-8">
   <title>WorkDeQ</title>
 
-
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/lumen/bootstrap.min.css">
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">-->
   
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="views/additional_styles.css">
+  
   <style>
     /* Only necessary if you are using navbar-fixed-top */
     body {
       padding-top: 60px;
     }
   </style>
-
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="assets/additional_styles.css">
-
+  <!--Not sure why, but the 3 lines below direct CSS loading from somewhere and mess up the CSS above-->
+  <!--<= stylesheet_link_tag    "application", :media => "all" %>-->
+  <!--<= javascript_include_tag "application" %>-->
+  <!--<= csrf_meta_tags %>-->
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
-
-<!--navigation BELOW-->
 <body>
+  
+  <!--navigation BELOW-->
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="/" class="navbar-brand">WorkDeQ</a>
-      </div>
-
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">  
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">WorkDeQ <i>beta</i></a>
+          </div>
+      
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="/batch_action_admin_admin_users">Batch Action Admin Admin Users</a></li>
-          <li><a href="/admin_admin_users">Admin Admin Users</a></li>
-          <li><a href="/admin_comments">Admin Comments</a></li>
-          <li><a href="/rails/info">Sitemap</a></li>
-        </ul>
+        <!--<ul class="nav navbar-nav navbar-right">-->
+  
+          <!--<li><a href="/batch_action_admin_admin_users">Batch Action Admin Admin Users</a></li>-->
+          <!--<li><a href="/admin_admin_users">Admin Admin Users</a></li>-->
+          <!--<li><a href="/admin_comments">Admin Comments</a></li>-->
+          <!--<li><a href="/rails/info">Sitemap</a></li>-->
+        <!--</ul>-->
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Dummy Edit Profile Link</a></li>
-          <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li>
+          <li>
+            <p class="navbar-btn">
+              <a href="#" class="btn">
+               Sign Up for Workshop
+              </a>
+            </p>
+           </li>
+          <li>
+            <p class="navbar-btn">
+              <a href="/users/edit" class="btn">
+                Dummy Edit Profile Link
+              </a>
+            </p>
+          </li>
+          <li>
+            <p class="navbar-btn">
+              <a href="/users/sign_out" class="btn btn-primary" data-method="delete" rel="nofollow">
+                Dummy Sign Out Link
+              </a>
+            </p>
+          </li>
         </ul>
       </div><!-- /.navbar-collapse -->
+      </div>
+     </div>
     </div>
   </nav>
 
@@ -79,9 +99,121 @@
     <%= yield %>
   </div>
   
+
+
+<!--footer nav-->
+    <div class="row padding-inside-top-md padding-inside-bottom-sm">
+        <div class="col-md-2 col-md-offset-3">
+          <h4>
+            WorkDEQ
+          </h4>
+          <ul class="list-unstyled">
+            <li>
+              Get Started
+            </li>
+            <li>
+              History
+            </li>
+            <li>
+              Plans
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>
+            Company
+          </h4>
+          <ul class="list-unstyled">
+            <li>
+              About us 
+            </li>
+            <li>
+              Jobs
+            </li>
+            <li>
+              Press
+            </li>
+            <li>
+              Blog
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>
+            Support
+          </h4>
+          <ul class="list-unstyled">
+            <li>
+              Help Center
+            </li>
+            <li>
+              Get Started
+            </li>
+            <li>
+              Contact
+            </li>
+            <li>
+              Privacy & Terms
+            </li>
+          </ul>
+        </div>
+        <!--<div class="col-md-2">-->
+        <!--  <h4>-->
+        <!--    Community-->
+        <!--  </h4>-->
+        <!--  <ul class="list-unstyled">-->
+        <!--    <li>-->
+        <!--      Developers-->
+        <!--    </li>-->
+        <!--    <li>-->
+        <!--      Referrals-->
+        <!--    </li>-->
+        <!--    <li>-->
+        <!--      Forum-->
+        <!--    </li>-->
+        <!--  </ul>-->
+        <!--</div>-->
+        <!--<div class="col-md-2">-->
+        <!--  <h4>-->
+        <!--    Connect-->
+        <!--  </h4>-->
+        <!--  <ul class="list-unstyled">-->
+        <!--    <li>Twitter-->
+        <!--    </li>-->
+        <!--    <li>-->
+        <!--      Facebook-->
+        <!--    </li>-->
+        <!--    <li>-->
+        <!--      Google +-->
+        <!--    </li>-->
+        <!--    <li>-->
+        <!--      YouTube-->
+        <!--    </li>-->
+        <!--  </ul>-->
+        <!--</div>-->
+        <!--<div class="col-md-2">-->
+        <!--  <h4>-->
+        <!--    Products-->
+        <!--  </h4>-->
+        <!--  <ul class="list-unstyled">-->
+        <!--    <li>-->
+        <!--      Pro-->
+        <!--    </li>-->
+        <!--    <li>-->
+        <!--      Business-->
+        <!--    </li>-->
+        <!--    <li>-->
+        <!--      Enterprise-->
+        <!--    </li>-->
+        <!--  </ul>-->
+        <!--</div>-->
+    </div>
+  
+  
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>-->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </body>
 </html>
