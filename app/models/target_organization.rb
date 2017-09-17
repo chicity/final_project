@@ -8,6 +8,8 @@
 #  priority_order :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  org_name       :string
+#  org_url        :string
 #
 
 class TargetOrganization < ApplicationRecord
