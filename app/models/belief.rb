@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: beliefs
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  org_id           :integer
+#  body             :text
+#  priority_order   :integer
+#  confirmed_status :boolean
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  lessons          :text
+#
+
 class Belief < ApplicationRecord
     
     belongs_to :user

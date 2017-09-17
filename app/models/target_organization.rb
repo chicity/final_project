@@ -10,6 +10,7 @@
 #  updated_at     :datetime         not null
 #  org_name       :string
 #  org_url        :string
+#  lessons        :text
 #
 
 class TargetOrganization < ApplicationRecord

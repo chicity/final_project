@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id         :integer          not null, primary key
+#  org_name   :string
+#  org_url    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Organization < ApplicationRecord
     
     has_many :target_organizations, :foreign_key => "org_id"

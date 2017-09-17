@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: target_people
+#
+#  id             :integer          not null, primary key
+#  person_id      :integer
+#  user_id        :integer
+#  belief_id      :integer
+#  priority_order :integer
+#  rationale      :text
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  first_name     :string
+#  last_name      :string
+#  linkedin_url   :string
+#  email          :string
+#  org_name       :string
+#  lessons        :text
+#
+
 class TargetPerson < ApplicationRecord
     
     belongs_to :user
@@ -10,7 +30,8 @@ class TargetPerson < ApplicationRecord
     has_many :review_tasks, :foreign_key => "target_people_id"
     
     #VALIDATIONS
-    validates :person_id, :user_id, :belief_id, presence: true, on: :create
-    validates :rationale, presence: true
+    # validates :person_id, :user_id, :belief_id, presence: true, on: :create //old validation prior to adding columns to Target_people
+    validates :user_id, :belief_id, :first_name, :last_name,  presence: true, on: :create
+    validates :rationale, :linkedin_url, presence: true
     
 end
