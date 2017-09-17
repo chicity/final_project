@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
   root 'organizations#index'
   
+  # Routes for the next_step VIEW:
+  # READ
+  # get "/next_step", :controller => "application", :action => "next_step"
+
   # Routes for the Review_task resource:
   # CREATE
   get "/review_tasks/new", :controller => "review_tasks", :action => "new"
@@ -95,6 +99,8 @@ Rails.application.routes.draw do
   # READ
   get "/target_people", :controller => "target_people", :action => "index"
   get "/target_people/:id", :controller => "target_people", :action => "show"
+  get "/next_step", :controller => "target_people", :action => "next_step"
+
 
   # UPDATE
   get "/target_people/:id/edit", :controller => "target_people", :action => "edit"

@@ -74,3 +74,6 @@ gem 'jquery-rails'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
+gem 'pqueue', '~> 2.1'
+# above for priority order // https://rubygems.org/gems/pqueue/versions/2.1.0

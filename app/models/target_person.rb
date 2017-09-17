@@ -34,4 +34,5 @@ class TargetPerson < ApplicationRecord
     validates :user_id, :belief_id, :first_name, :last_name, :rationale,  presence: true, on: :create
     # validates :linkedin_url, :email, :org_name, :lessons, presence: true // don't want to require these at any time
     
+    
 end

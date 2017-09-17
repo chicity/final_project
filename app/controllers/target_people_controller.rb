@@ -70,4 +70,16 @@ class TargetPeopleController < ApplicationController
       redirect_to(:back, :notice => "Target person deleted.")
     end
   end
-end
+  
+  # below is attempt at defining all variables needed to render the next_step page
+  def next_step
+    
+    
+    
+    @next_step = "Email Tom Hardy about importance of stats analysis in R."
+    @contact_info = "You can reach him at thehardiest@gmail.com"
+  
+    render("/next_step.html.erb")
+  end # end of next_step
+  
+end #Class end
