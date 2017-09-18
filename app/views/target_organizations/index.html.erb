@@ -9,19 +9,19 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>User</th>
-        <th>Org</th>
         <th>Priority order</th>
+        <th>Organization Name</th>
+        <th>Organization Website</th>
         <th>Actions</th>
       </tr>
 
       <% @target_organizations.each do |target_organization| %>
       <tr>
+        <td><%= target_organization.priority_order %></td>
         <td><%= target_organization.user_id %></td>
         <td><%= target_organization.org_id %></td>
-        <td><%= target_organization.priority_order %></td>
         <td>
-          <a href="/target_organizations/<%= target_organization.id %>" class="btn btn-primary">Show</a>
+          <a href="/target_organizations/<%= target_organization.i %>" class="btn btn-primary">Show</a>
           <a href="/target_organizations/<%= target_organization.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_target_organization/<%= target_organization.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>

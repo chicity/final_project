@@ -76,8 +76,8 @@ class TargetPeopleController < ApplicationController
     
     
     
-    @next_step = "Email Tom Hardy about importance of stats analysis in R."
-    @contact_info = "You can reach him at thehardiest@gmail.com"
+    @next_step = "(Email) (Tom Hardy) to confirm the importance of (stats analysis in R)."
+    @contact_info = "You can reach him at (thehardiest@gmail.com)"
   
     render("/next_step.html.erb")
   end # end of next_step

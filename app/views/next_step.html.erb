@@ -6,20 +6,23 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-
-      <div class="jumbotron">
-        <h1>
-            Next Step
-        </h1>
-        <h2>
-            <%= @next_step %>
-        </h2>
-        <h2>
-           <%= @contact_info %>
-        </h2>
-      </div>
-
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="col-md-12">
+    
+          <div class="jumbotron">
+            <h1>
+                Your Next Step
+            </h1>
+            <h2>
+                <%= @next_step %>
+            </h2>
+            <h2>
+               <%= @contact_info %>
+            </h2>
+            <!--You'll add a checkbox that will send info to the appropriate task table to then, on refresh, render a new Next Step-->
+          </div>
+    
+        </div>
     </div>
   </div>
 </div>

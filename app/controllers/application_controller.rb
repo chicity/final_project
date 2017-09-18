@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, :keys => [:avatar, :advisor_id])
   end
   
-  # below is attempt at defining all variables needed to render the next_step page
-  def next_step
+  # # below is attempt at defining all variables needed to render the next_step page
+  # def next_step
     
     
     
-    @next_step = "Email Tom Hardy about importance of stats analysis in R"
+  #   @next_step = "Email Tom Hardy about importance of stats analysis in R"
   
-    render("https://ide.c9.io/chicity/workdeq/next_step.html.erb")
-  end # end of next_step
+  #   render("https://ide.c9.io/chicity/workdeq/next_step.html.erb")
+  # end # end of next_step
 
 end
