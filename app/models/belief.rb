@@ -2,22 +2,23 @@
 #
 # Table name: beliefs
 #
-#  id               :integer          not null, primary key
-#  user_id          :integer
-#  org_id           :integer
-#  body             :text
-#  priority_order   :integer
-#  confirmed_status :boolean
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  lessons          :text
+#  id                     :integer          not null, primary key
+#  user_id                :integer
+#  org_id                 :integer
+#  body                   :text
+#  priority_order         :integer
+#  confirmed_status       :boolean
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  lessons                :text
+#  target_organization_id :integer
 #
 
 class Belief < ApplicationRecord
     
     belongs_to :user
     belongs_to :target_organization
-    # belongs_to :org, :class_name => "Organization"
+    # belongs_to :org, :class_name => "Organization" //9-17, I'm worried target_organization_id isn't in here.
     has_many :target_persons
     has_many :contact_tasks
     # has_many :tasks, :class_name => "ContactTask" //updating to above version to correct from FirstDraft mistake

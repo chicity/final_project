@@ -11,13 +11,14 @@
 #  org_name       :string
 #  org_url        :string
 #  lessons        :text
+#  position       :integer
 #
 
 class TargetOrganization < ApplicationRecord
     
     belongs_to :user
     # belongs_to :org, :class_name => "Organization"
-    has_many :beliefs, :foreign_key => "org_id"
+    has_many :beliefs, :foreign_key => "target_organization_id"
     
     #VALIDATIONS
     validates :user_id, :org_name, :org_url, presence: true, on: :create

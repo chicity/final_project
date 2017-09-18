@@ -77,3 +77,6 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 gem 'pqueue', '~> 2.1'
 # above for priority order // https://rubygems.org/gems/pqueue/versions/2.1.0
+
+gem 'acts_as_list'
+# above for assigning order and giving changes to items in the list // https://github.com/swanandp/acts_as_list

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917041351) do
+ActiveRecord::Schema.define(version: 20170918023607) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170917041351) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "lessons"
+    t.integer "target_organization_id"
   end
 
   create_table "contact_tasks", force: :cascade do |t|
@@ -138,6 +139,7 @@ ActiveRecord::Schema.define(version: 20170917041351) do
     t.string "org_name"
     t.string "org_url"
     t.text "lessons"
+    t.integer "position"
   end
 
   create_table "target_people", force: :cascade do |t|
