@@ -1,31 +1,122 @@
-<div class="page-header">
-  <h3>Target Organization #<%= @target_organization.id %></h3>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+
+      <div class="page-header">
+        <h3>Target Organization |  <%= @target_organization.org_name %></h3>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <dl class="dl-horizontal">
+            <!--<dt>User</dt>-->
+            <!--<dd><%= @target_organization.user_id %></dd>-->
+      
+            <dt>Organization Name</dt>
+            <dd><%= @target_organization.org_name %></dd>
+            
+            <dt>Where to find them</dt>
+            <dd><%= @target_organization.org_url %></dd>
+      
+            <dt>Priority order</dt>
+            <dd><%= @target_organization.position %></dd>
+      
+          </dl>
+      
+          <div class="btn-group btn-group-justified">
+            <a href="/target_organizations" class="btn btn-primary">
+              Back
+            </a>
+            <a href="/target_organizations/<%= @target_organization.id %>/edit" class="btn btn-warning">
+              Edit
+            </a>
+            <a href="/delete_target_organization/<%= @target_organization.id %>" class="btn btn-danger" rel="nofollow">
+              Delete
+            </a>
+          </div>
+          
+          <!--<h1>-->
+          <!--Add Beliefs-->
+          <!--<a href="/beliefs/new" class="btn btn-lg btn-success">Add a Belief</a>-->
+          <!--</h1>-->
+          
+        </div>
+      </div>
+    
+    
+<!--Here's the start of ADDing a Belief to a Target Org-->
+    <ul>
+      <h2>
+        Current Beliefs for <%= @target_organization.org_name %>
+      </h2>
+      <% @target_organization.beliefs.each do |belief| %>
+      <li><a href="/beliefs/<%= belief.id%>"><%= belief.body%></li>
+      <% end%>
+    </ul>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>User</dt>
-      <dd><%= @target_organization.user_id %></dd>
+  <div class="col-md-12">
+    <form action="/create_belief" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <dt>Org</dt>
-      <dd><%= @target_organization.org_id %></dd>
+<!-- Label and input for user_id -->
+            <div class="form-group">
+              <!--<label for="user_id" class="control-label">-->
+              <!--  User id-->
+              <!--</label>-->
+      
+              <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+            </div>
+      
+            <!-- Label and input for org_id -->
+            <div class="form-group">
+              <!--<label for="target_organization_id" class="control-label">-->
+              <!--  Org-->
+              <!--</label>-->
+      
+              <input type="hidden" id="target_organization_id" name="target_organization_id" placeholder="Org" class="form-control" value="<%= @target_organization.id %>">
+            </div>
+      
+            <!-- Label and input for body -->
+            <div class="form-group">
+              <label for="body" class="control-label">
+                Body
+              </label>
+      
+              <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @belief.body %></textarea>
+            </div>
+      
+            <!-- Label and input for priority_order -->
+            <div class="form-group">
+              <label for="priority_order" class="control-label">
+                Priority order
+              </label>
+      
+              <!--<input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<= @belief.priority_order %>">-->
+            </div>
+      
+            <!-- Label and input for confirmed_status -->
+            <div class="checkbox">
+              <label for="confirmed_status">
+                <!--<input type="checkbox" id="confirmed_status" name="confirmed_status" value="1" <= "checked" if @belief.confirmed_status %>>-->
+                Confirmed status
+              </label>
+            </div>
+      
+            <button class="btn btn-success">
+              Create Belief
+            </button>
+            or
+            <a href="/beliefs">Cancel</a>
+          </form>
 
-      <dt>Priority order</dt>
-      <dd><%= @target_organization.priority_order %></dd>
 
-    </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/target_organizations" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/target_organizations/<%= @target_organization.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_target_organization/<%= @target_organization.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+
+
+
+    
     </div>
-  </div>
+  </div> <!--end of row-->
 </div>

@@ -13,7 +13,13 @@ class BeliefsController < ApplicationController
 
   def new
     @belief = Belief.new
+    
+    @selected_org = params[:org_name]
+    
+    # @target_organization = TargetOrganization.new
 
+    # @target_organization.org_name = params[:org_name]
+    
     render("beliefs/new.html.erb")
   end
 
@@ -21,7 +27,7 @@ class BeliefsController < ApplicationController
     @belief = Belief.new
 
     @belief.user_id = params[:user_id]
-    @belief.org_id = params[:org_id]
+    @belief.target_organization_id = params[:target_organization_id]
     @belief.body = params[:body]
     @belief.priority_order = params[:priority_order]
     @belief.confirmed_status = params[:confirmed_status]

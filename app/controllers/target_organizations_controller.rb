@@ -21,8 +21,10 @@ class TargetOrganizationsController < ApplicationController
     @target_organization = TargetOrganization.new
 
     @target_organization.user_id = params[:user_id]
-    @target_organization.org_id = params[:org_id]
-    @target_organization.priority_order = params[:priority_order]
+    @target_organization.org_name = params[:org_name]
+    @target_organization.org_url = params[:org_url]
+    @target_organization.position = params[:position]
+    # @target_organization.priority_order = params[:priority_order]
 
     save_status = @target_organization.save
 
