@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
       <div class="page-header">
-        <h3>With BLAH in mind, what do you think they believe is true?</h3>
+        <h3>With BLAH_ORG in mind, what do you think they believe is true?</h3>
         <!--<h3>With BLAH <= @belief.target_organization.org_name %> in mind, what do you think they believe is true?</h3>-->
 
       </div>
@@ -30,7 +30,7 @@
                 User
               </label>
       
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+              <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
             </div>
       
             <!-- Label and input for org_id -->
@@ -38,8 +38,9 @@
               <label for="target_organization_id" class="control-label">
                 Org
               </label>
-      
-              <input type="text" id="target_organization_id" name="target_organization_id" placeholder="Org" class="form-control" value="<%= @belief.org_id %>">
+              <%= select_tag(:target_organization_id, options_from_collection_for_select(TargetOrganization.all, :id, :org_name, @belief.target_organization_id), :class =>"form-control") %>
+
+              <!--<input type="text" id="target_organization_id" name="target_organization_id" placeholder="Org" class="form-control" value="<= @belief.target_organization_id %>">-->
             </div>
       
             <!-- Label and input for body -->
@@ -61,12 +62,12 @@
             </div>
       
             <!-- Label and input for confirmed_status -->
-            <div class="checkbox">
-              <label for="confirmed_status">
-                <input type="checkbox" id="confirmed_status" name="confirmed_status" value="1" <%= "checked" if @belief.confirmed_status %>>
-                Confirmed status
-              </label>
-            </div>
+            <!--<div class="checkbox">-->
+            <!--  <label for="confirmed_status">-->
+            <!--    <input type="checkbox" id="confirmed_status" name="confirmed_status" value="1" <= "checked" if @belief.confirmed_status %>>-->
+            <!--    Confirmed status-->
+            <!--  </label>-->
+            <!--</div>-->
       
             <button class="btn btn-success">
               Create Belief

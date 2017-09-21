@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Belief #<%= @belief.id %></h3>
+  <h3>Edit this Belief</h3>
 </div>
 
 <div class="row">
@@ -20,29 +20,46 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
+        <!--<label for="user_id" class="control-label">-->
+        <!--  User-->
+        <!--</label>-->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @belief.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @belief.user_id %>">
       </div>
 
       <!-- Label and input for org_id -->
       <div class="form-group">
-        <label for="org_id" class="control-label">
-          Org
+        <label for="target_organization_id" class="control-label">
+          Organization
         </label>
 
-        <input type="text" id="org_id" name="org_id" placeholder="Org" class="form-control" value="<%= @belief.org_id %>">
+        <!--<input type="text" id="target_organization_id" name="target_organization_id" placeholder="Org" class="form-control" value="<= @belief.target_organization_id %>">-->
+        <!--<input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<= @movie.director_id %>">-->
+        <!--<= select_tag(:name, options_from_collection_for_select(Array to loop across.all, :id, :name, @movie.director_id), :class =>"form-control") %>-->
+
+        <%= select_tag(:target_organization_id, options_from_collection_for_select(TargetOrganization.all, :id, :org_name, @belief.target_organization_id), :class =>"form-control") %>
       </div>
 
       <!-- Label and input for body -->
       <div class="form-group">
         <label for="body" class="control-label">
-          Body
+          You believe that <%= @belief.target_organization.org_name %> values...
+          <!--You believe that <= @beliefs.target_organization.org_name %>-->
+
         </label>
 
         <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @belief.body %></textarea>
+      </div>
+
+      <!-- Label and input for LESSONS -->
+      <div class="form-group">
+        <label for="lessons" class="control-label">
+          You learned that <%= @belief.target_organization.org_name %> values...
+          <!--You believe that <= @beliefs.target_organization.org_name %>-->
+
+        </label>
+
+        <textarea id="lessons" name="lessons" placeholder="Lessons" class="form-control" rows="3"><%= @belief.lessons %></textarea>
       </div>
 
       <!-- Label and input for priority_order -->
@@ -58,7 +75,7 @@
       <div class="checkbox">
         <label for="confirmed_status">
           <input type="checkbox" id="confirmed_status" name="confirmed_status" value="1" <%= "checked" if @belief.confirmed_status %>>
-          Confirmed status
+          Completed?
         </label>
       </div>
 

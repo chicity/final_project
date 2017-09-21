@@ -9,9 +9,10 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>User</th>
+        <!--<th>User</th>-->
         <th>Org</th>
         <th>Body</th>
+        <th>Lessons</th>
         <th>Priority order</th>
         <th>Confirmed status</th>
         <th>Actions</th>
@@ -19,9 +20,10 @@
 
       <% @beliefs.each do |belief| %>
       <tr>
-        <td><%= belief.user_id %></td>
-        <td><%= belief.org_id %></td>
+        <!--<td><= belief.user_id %></td>-->
+        <td><%= belief.target_organization.org_name %></td>
         <td><%= belief.body %></td>
+        <td><%= belief.lessons %></td>
         <td><%= belief.priority_order %></td>
         <td><%= belief.confirmed_status %></td>
         <td>
@@ -34,6 +36,3 @@
     </table>
   </div>
 </div>
-
-
-

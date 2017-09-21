@@ -38,6 +38,10 @@ class TargetOrganizationsController < ApplicationController
   def edit
     @target_organization = TargetOrganization.find(params[:id])
 
+
+    @target_organization.user_id = params[:user_id]
+    @target_organization.org_id = params[:org_id]
+    
     render("target_organizations/edit.html.erb")
   end
 

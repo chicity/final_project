@@ -10,15 +10,15 @@
         <div class="col-md-12 mb-2">
           <dl class="dl-horizontal">
             <!--<dt>User</dt>-->
-            <!--<dd><%= @target_organization.user_id %></dd>-->
+            <!--<dd><= @target_organization.user_id %></dd>-->
       
-            <dt>Organization Name</dt>
-            <dd><%= @target_organization.org_name %></dd>
+            <!--<dt>Organization Name</dt> ## dont' need this to show b/c name is above in h3-->
+            <!--<dd><= @target_organization.org_name %></dd>-->
             
             <dt>Where to find them</dt>
             <dd><%= @target_organization.org_url %></dd>
       
-            <dt>Priority order</dt>
+            <dt>Organization Priority Order</dt>
             <dd><%= @target_organization.position %></dd>
       
           </dl>
@@ -45,15 +45,19 @@
     
     
 <!--Here's the start of ADDing a Belief to a Target Org-->
-    <ul>
-      <h2>
+    <h3>
         Current Beliefs for <%= @target_organization.org_name %>
-      </h2>
+    </h3>
+    <ul>
       <% @target_organization.beliefs.each do |belief| %>
-      <li><a href="/beliefs/<%= belief.id%>"><%= belief.body%></li>
+      <li><a href="/beliefs/<%= belief.id%>"><%= belief.body%></a></li>
       <% end%>
     </ul>
 
+
+    <h3>
+      Add a Belief
+    </h3>
 <div class="row">
   <div class="col-md-12">
     <form action="/create_belief" method="post">
@@ -81,28 +85,31 @@
             <!-- Label and input for body -->
             <div class="form-group">
               <label for="body" class="control-label">
-                Body
+                Beliefs (1 belief at a time)
               </label>
       
-              <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @belief.body %></textarea>
+              <textarea id="body" name="body" placeholder="You believe that <%= @target_organization.org_name %> values..." class="form-control" rows="3"></textarea>
             </div>
       
             <!-- Label and input for priority_order -->
             <div class="form-group">
               <label for="priority_order" class="control-label">
-                Priority order
+                How important is this belief to your getting hired? (higher is more important)
               </label>
       
-              <!--<input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<= @belief.priority_order %>">-->
+              <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="0">
+              <!--<input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<= @beliefs_created_at %>">-->
+
             </div>
       
             <!-- Label and input for confirmed_status -->
-            <div class="checkbox">
-              <label for="confirmed_status">
-                <!--<input type="checkbox" id="confirmed_status" name="confirmed_status" value="1" <= "checked" if @belief.confirmed_status %>>-->
-                Confirmed status
-              </label>
-            </div>
+            <!--<div class="checkbox">-->
+            <!--  <label for="confirmed_status">-->
+            <!--    <input type="checkbox" id="confirmed_status" name="confirmed_status" value="1" <= "checked" if @target_organization.beliefs.confirmed_status %>>-->
+            <!--    Confirmed status-->
+                <!--not sure if @target_organization is correct or if it should start with @beliefs, but realized I only need this confirm on the Beliefs SHOW.-->
+            <!--  </label>-->
+            <!--</div>-->
       
             <button class="btn btn-success">
               Create Belief

@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Target Organization #<%= @target_organization.id %></h3>
+  <h3>Make Changes to | <%= @target_organization.org_name %></h3>
 </div>
 
 <div class="row">
@@ -20,29 +20,47 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
+        <!--<label for="user_id" class="control-label">-->
+        <!--  User-->
+        <!--</label>-->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @target_organization.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @target_organization.user_id %>">
       </div>
 
       <!-- Label and input for org_id -->
       <div class="form-group">
-        <label for="org_id" class="control-label">
-          Org
+        <!--<label for="org_id" class="control-label">-->
+        <!--  Org-->
+        <!--</label>-->
+
+        <input type="hidden" id="org_id" name="org_id" placeholder="Org" class="form-control" value="<%= @target_organization.id %>">
+      </div>
+      
+      <!-- Label and input for lessons -->
+      <div class="form-group">
+        <label for="lessons" class="control-label">
+          Summary of Lessons
         </label>
 
-        <input type="text" id="org_id" name="org_id" placeholder="Org" class="form-control" value="<%= @target_organization.org_id %>">
+        <textarea type="text" id="lessons" name="lessons" placeholder="What do you know is true about <%= @target_organization.org_name %>?" class="form-control" value="<%= @target_organization.lessons %>" rows="3"></textarea>
       </div>
+      
+      <!-- Label and input for org_url -->
+      <div class="form-group">
+        <label for="org_url" class="control-label">
+          Website
+        </label>
 
+        <input type="text" id="org_url" name="org_url" placeholder="a cool website" class="form-control" value="<%= @target_organization.org_url %>">
+      </div>
+      
       <!-- Label and input for priority_order -->
       <div class="form-group">
-        <label for="priority_order" class="control-label">
+        <label for="position" class="control-label">
           Priority order
         </label>
 
-        <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<%= @target_organization.priority_order %>">
+        <input type="text" id="position" name="position" placeholder="Priority" class="form-control" value="<%= @target_organization.position %>">
       </div>
 
       <button class="btn btn-warning">

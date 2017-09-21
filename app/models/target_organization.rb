@@ -18,7 +18,7 @@ class TargetOrganization < ApplicationRecord
     
     belongs_to :user
     # belongs_to :org, :class_name => "Organization"
-    has_many :beliefs
+    has_many(:beliefs, :class_name =>"Belief", :foreign_key => "target_organization_id")
     # , :class_name =>"Beliefs"
     
     #VALIDATIONS
