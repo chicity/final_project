@@ -14,19 +14,20 @@
         <th>Organization Website</th>
         <th>Actions</th>
       </tr>
-
-      <% @target_organizations.each do |target_organization| %>
-      <tr>
-        <td><%= target_organization.position %></td>
-        <td><%= target_organization.org_name %></td>
-        <td><%= target_organization.org_url %></td>
-        <td>
-          <a href="/target_organizations/<%= target_organization.id %>" class="btn btn-primary">Show</a>
-          <a href="/target_organizations/<%= target_organization.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_target_organization/<%= target_organization.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
-      <% end %>
+      <!--< unless @target_organizations.empty? %>-->
+        <% @target_organizations.each do |target_organization| %>
+        <tr>
+          <td><%= target_organization.position %></td>
+          <td><%= target_organization.org_name %></td>
+          <td><%= target_organization.org_url %></td>
+          <td>
+            <a href="/target_organizations/<%= target_organization.id %>" class="btn btn-primary">Show</a>
+            <a href="/target_organizations/<%= target_organization.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_target_organization/<%= target_organization.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          </td>
+        </tr>
+        <% end %>
+      <!--< end %>-->
     </table>
   </div>
 </div>

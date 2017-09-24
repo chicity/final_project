@@ -9,9 +9,11 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Target Person #<%= @target_person.id %></h3>
+  <h3>Update what you know about <%= @target_person.first_name %> <%= @target_person.last_name %></h3>
 </div>
-
+  <!--<h4>Who can help you confirm...<= @b.body %></h4>-->
+    <!--< b = Belief.find_by({ :id => @target_person.belief_id })%>-->
+    <!--</br>"<= b.body %>"</h4>-->
 <div class="row">
   <div class="col-md-12">
     <form action="/update_target_person/<%= @target_person.id %>" method="post">
@@ -19,48 +21,103 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for person_id -->
-      <div class="form-group">
-        <label for="person_id" class="control-label">
-          Person
-        </label>
+      <!--<div class="form-group">-->
+      <!--  <label for="person_id" class="control-label">-->
+      <!--    Person-->
+      <!--  </label>-->
 
-        <input type="text" id="person_id" name="person_id" placeholder="Person" class="form-control" value="<%= @target_person.person_id %>">
-      </div>
+      <!--  <input type="text" id="person_id" name="person_id" placeholder="Person" class="form-control" value="<= @target_person.person_id %>">-->
+      <!--</div>-->
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
+        <!--<label for="user_id" class="control-label">-->
+        <!--  User-->
+        <!--</label>-->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @target_person.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @target_person.user_id %>">
       </div>
 
-      <!-- Label and input for belief_id -->
+      <!-- Label and input for belief_id // Don't want to permit upates to target's beliefs-->
       <div class="form-group">
-        <label for="belief_id" class="control-label">
-          Belief
+        <!--<label for="belief_id" class="control-label">-->
+        <!--  Belief-->
+        <!--</label>-->
+
+        <input type="hidden" id="belief_id" name="belief_id" placeholder="Belief" class="form-control" value="<%= @target_person.belief_id %>">
+      <!--  value="< b = Belief.find_by({ :id => @target_person.belief_id })%><= b.body %>">-->
+      <!--</div>-->
+
+      <!-- Label and input for rationale -->
+      <div class="form-group">
+        <label for="rationale" class="control-label">
+          Why they're good
         </label>
 
-        <input type="text" id="belief_id" name="belief_id" placeholder="Belief" class="form-control" value="<%= @target_person.belief_id %>">
+        <textarea id="rationale" name="rationale" placeholder="Rationale" class="form-control" rows="3"><%= @target_person.rationale %></textarea>
       </div>
+      
+      <!-- Label and input for lessons -->
+      <div class="form-group">
+        <label for="lessons" class="control-label">
+          What you've learned from <%= @target_person.first_name %>
+        </label>
 
+        <textarea id="lessons" name="lessons" placeholder="Lessons" class="form-control" rows="3"><%= @target_person.lessons %></textarea>
+      </div>
+      
       <!-- Label and input for priority_order -->
       <div class="form-group">
         <label for="priority_order" class="control-label">
-          Priority order
+          Priority order (higher is more important to you, -100 to 100)
         </label>
 
         <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<%= @target_person.priority_order %>">
       </div>
 
-      <!-- Label and input for rationale -->
+      <!-- Label and input for first_name -->
       <div class="form-group">
-        <label for="rationale" class="control-label">
-          Rationale
+        <label for="first_name" class="control-label">
+          First Name
         </label>
 
-        <textarea id="rationale" name="rationale" placeholder="Rationale" class="form-control" rows="3"><%= @target_person.rationale %></textarea>
+        <input type="text" id="first_name" name="first_name" placeholder="First Name" class="form-control" value="<%= @target_person.first_name %>">
+      </div>
+      
+      <!-- Label and input for last_name -->
+      <div class="form-group">
+        <label for="last_name" class="control-label">
+          Last Name
+        </label>
+
+        <input type="text" id="last_name" name="last_name" placeholder="Last Name" class="form-control" value="<%= @target_person.last_name %>">
+      </div>
+      
+      <!-- Label and input for Where they work -->
+      <div class="form-group">
+        <label for="org_name" class="control-label">
+          Where they work
+        </label>
+
+        <input type="text" id="org_name" name="org_name" placeholder="Organization" class="form-control" value="<%= @target_person.org_name %>">
+      </div>
+      
+      <!-- Label and input for email -->
+      <div class="form-group">
+        <label for="email" class="control-label">
+          Email Address
+        </label>
+
+        <input type="text" id="email" name="email" placeholder="Where can you reach them?" class="form-control" value="<%= @target_person.email %>">
+      </div>
+      
+      <!-- Label and input for linkedin_url -->
+      <div class="form-group">
+        <label for="linkedin_url" class="control-label">
+          LinkedIN Link
+        </label>
+
+        <input type="text" id="linkedin_url" name="linkedin_url" placeholder="www.linkedIN.com/..." class="form-control" value="<%= @target_person.linkedin_url %>">
       </div>
 
       <button class="btn btn-warning">

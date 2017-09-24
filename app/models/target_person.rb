@@ -33,6 +33,17 @@ class TargetPerson < ApplicationRecord
     # validates :person_id, :user_id, :belief_id, presence: true, on: :create //old validation prior to adding columns to Target_people
     validates :user_id, :belief_id, :first_name, :last_name, :rationale,  presence: true, on: :create
     # validates :linkedin_url, :email, :org_name, :lessons, presence: true // don't want to require these at any time
+    validates :priority_order, :numericality => { :only_integer => true, :greater_than_or_equal_to => -100, :less_than_or_equal_to => 100 }
+
     
+    
+    
+    # below is attempt at defining all variables needed to render the next_step page
+    def next_step
+    
+        @next_step = "Email Tom Hardy about importance of stats analysis in R"
+      
+        render("https://ide.c9.io/chicity/workdeq/next_step.html.erb")
+    end # end of next_step
     
 end

@@ -1,6 +1,7 @@
 class TargetOrganizationsController < ApplicationController
   def index
     @target_organizations = TargetOrganization.all
+    # @target_organization = TargetOrganization.all.order(position: :desc)
 
     render("target_organizations/index.html.erb")
   end

@@ -1,24 +1,38 @@
 <div class="page-header">
-  <h3>Target Person #<%= @target_person.id %></h3>
+  <h3>Details on <%= @target_person.first_name %> <%= @target_person.last_name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Person</dt>
-      <dd><%= @target_person.person_id %></dd>
+      <dt>Name</dt>
+      <dd><%= @target_person.first_name %> <%= @target_person.last_name %></dd>
+      
+      <dt>Where they work</dt>
+      <dd><%= @target_person.org_name %></dd>
 
-      <dt>User</dt>
-      <dd><%= @target_person.user_id %></dd>
+      <dt>Email</dt>
+      <dd><%= @target_person.email %></dd>
+      
+      <dt>LinkedIN Profile</dt>
+      <dd><%= @target_person.linkedin_url %></dd>
 
       <dt>Belief</dt>
-      <dd><%= @target_person.belief_id %></dd>
+      <dd>
+        <% b = Belief.find_by({ :id => @target_person.belief_id })%>
+        <%= b.body %>
+      </dd>
+      <!--<dd><= @target_person.belief_id %></dd>-->
 
+
+      <dt>Rationale for Reaching Out</dt>
+      <dd><%= @target_person.rationale %></dd>
+      
+      <dt>Learned from them</dt>
+      <dd><%= @target_person.lessons %></dd>
+      
       <dt>Priority order</dt>
       <dd><%= @target_person.priority_order %></dd>
-
-      <dt>Rationale</dt>
-      <dd><%= @target_person.rationale %></dd>
 
     </dl>
 

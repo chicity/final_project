@@ -8,6 +8,8 @@ class TargetPeopleController < ApplicationController
   def show
     @target_person = TargetPerson.find(params[:id])
 
+    @belief = @target_person.belief_id
+
     render("target_people/show.html.erb")
   end
 
@@ -20,7 +22,12 @@ class TargetPeopleController < ApplicationController
   def create
     @target_person = TargetPerson.new
 
-    @target_person.person_id = params[:person_id]
+    # @target_person.person_id = params[:person_id]
+    @target_person.first_name = params[:first_name]
+    @target_person.last_name = params[:last_name]
+    @target_person.linkedin_url = params[:linkedin_url]
+    @target_person.email = params[:email]
+    @target_person.org_name = params[:org_name]
     @target_person.user_id = params[:user_id]
     @target_person.belief_id = params[:belief_id]
     @target_person.priority_order = params[:priority_order]
@@ -29,7 +36,7 @@ class TargetPeopleController < ApplicationController
     save_status = @target_person.save
 
     if save_status == true
-      redirect_to("/target_people/#{@target_person.id}", :notice => "Target person created successfully.")
+      redirect_to("/target_people/#{@target_person.id}", :notice => "New Target person created successfully.")
     else
       render("target_people/new.html.erb")
     end
@@ -37,14 +44,27 @@ class TargetPeopleController < ApplicationController
 
   def edit
     @target_person = TargetPerson.find(params[:id])
+    
+    # attempted below to render belief.body on Tar_people EDIT = fail due to fixnum error on 2 (it was taking belief.id as number with no method)
+    # @b = @target_person.belief_id
+    # @b
+    
+    # attempted below to create instance variable to render targ_org name on Tar_people EDIT = fail
+    # @belief = Belief.find_by({ :id => @target_person.belief_id })
+    # @target_organization = @belief.target_organization_id
 
+    
     render("target_people/edit.html.erb")
   end
 
   def update
     @target_person = TargetPerson.find(params[:id])
 
-    @target_person.person_id = params[:person_id]
+    @target_person.first_name = params[:first_name]
+    @target_person.last_name = params[:last_name]
+    @target_person.linkedin_url = params[:linkedin_url]
+    @target_person.email = params[:email]
+    @target_person.org_name = params[:org_name]
     @target_person.user_id = params[:user_id]
     @target_person.belief_id = params[:belief_id]
     @target_person.priority_order = params[:priority_order]

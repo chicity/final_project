@@ -1,7 +1,7 @@
 class BeliefsController < ApplicationController
   def index
-    @beliefs = Belief.all
-
+    # @beliefs = Belief.all  // original, testing next line to create order in Index
+    @beliefs = Belief.all.order(priority_order: :desc)
     render("beliefs/index.html.erb")
   end
 

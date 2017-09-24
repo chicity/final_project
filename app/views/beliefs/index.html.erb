@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Beliefs
+    All Your Career Beliefs
     <a href="/beliefs/new" class="btn btn-lg btn-success">New Belief</a>
   </h1>
 </div>
@@ -17,21 +17,23 @@
         <th>Confirmed status</th>
         <th>Actions</th>
       </tr>
-
-      <% @beliefs.each do |belief| %>
-      <tr>
-        <!--<td><= belief.user_id %></td>-->
-        <td><%= belief.target_organization.org_name %></td>
-        <td><%= belief.body %></td>
-        <td><%= belief.lessons %></td>
-        <td><%= belief.priority_order %></td>
-        <td><%= belief.confirmed_status %></td>
-        <td>
-          <a href="/beliefs/<%= belief.id %>" class="btn btn-primary">Show</a>
-          <a href="/beliefs/<%= belief.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_belief/<%= belief.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
+      
+      <% unless @beliefs.empty? %>
+        <% @beliefs.each do |belief| %>
+          <tr>
+            <!--<td><= belief.user_id %></td>-->
+            <td><%= belief.target_organization.org_name %></td>
+            <td><%= belief.body %></td>
+            <td><%= belief.lessons %></td>
+            <td><%= belief.priority_order %></td>
+            <td><%= belief.confirmed_status %></td>
+            <td>
+              <a href="/beliefs/<%= belief.id %>" class="btn btn-primary">Show</a>
+              <a href="/beliefs/<%= belief.id %>/edit" class="btn btn-warning">Edit</a>
+              <a href="/delete_belief/<%= belief.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </table>
   </div>

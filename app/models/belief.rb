@@ -20,7 +20,7 @@ class Belief < ApplicationRecord
     belongs_to :target_organization
     # , :class_name => "TargetOrganization", :foreign_key => "target_organization_id"
     # belongs_to :org, :class_name => "Organization" //9-17, I'm worried target_organization_id isn't in here. *See above*
-    has_many :target_persons
+    has_many(:target_person, :class_name =>"TargetPerson", :foreign_key => "belief_id")
     has_many :contact_tasks
     # has_many :tasks, :class_name => "ContactTask" //updating to above version to correct from FirstDraft mistake
     has_many :schedule_tasks
@@ -31,6 +31,7 @@ class Belief < ApplicationRecord
  #VALIDATIONS  
   validates :body, presence: true
   validates :user_id, :target_organization_id, presence: true, on: :create
+  validates :priority_order, :numericality => { :only_integer => true, :greater_than_or_equal_to => -100, :less_than_or_equal_to => 100 }
 #   validates :boolean_confirmed_status, exclusion: { in: [nil] } #intended to ensure confirmed_status isn't nil, but false or true. I wonder if I've set
   #this up to not let it be nil?
   

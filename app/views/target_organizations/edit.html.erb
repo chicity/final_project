@@ -42,7 +42,7 @@
           Summary of Lessons
         </label>
 
-        <textarea type="text" id="lessons" name="lessons" placeholder="What do you know is true about <%= @target_organization.org_name %>?" class="form-control" value="<%= @target_organization.lessons %>" rows="3"></textarea>
+        <textarea type="text" id="lessons" name="lessons" placeholder="What have you learned about <%= @target_organization.org_name %>?" class="form-control" value="<%= @target_organization.lessons %>" rows="5"></textarea>
       </div>
       
       <!-- Label and input for org_url -->
@@ -57,7 +57,7 @@
       <!-- Label and input for priority_order -->
       <div class="form-group">
         <label for="position" class="control-label">
-          Priority order
+          ?POSITION
         </label>
 
         <input type="text" id="position" name="position" placeholder="Priority" class="form-control" value="<%= @target_organization.position %>">

@@ -8,66 +8,108 @@
   <% end %>
 <% end %>
 
-<div class="page-header">
-  <h3>Add Target Person</h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <form action="/create_target_person" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for person_id -->
-      <div class="form-group">
-        <label for="person_id" class="control-label">
-          Person
-        </label>
-
-        <input type="text" id="person_id" name="person_id" placeholder="Person" class="form-control" value="<%= @target_person.person_id %>">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <div class="page-header">
+        <h3>Add Target Person</h3>
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @target_person.user_id %>">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/create_target_person" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    
+          <!-- Label and input for first_name -->
+          <div class="form-group">
+            <label for="first_name" class="control-label">
+              First Name
+            </label>
+    
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" class="form-control" value="<%= @target_person.first_name %>">
+          </div>
+          
+          <!-- Label and input for last_name -->
+          <div class="form-group">
+            <label for="last_name" class="control-label">
+              Last Name
+            </label>
+    
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" class="form-control" value="<%= @target_person.last_name %>">
+          </div>
+          
+          <!-- Label and input for org_name -->
+          <div class="form-group">
+            <label for="org_name" class="control-label">
+              Person
+            </label>
+    
+            <input type="text" id="org_name" name="org_name" placeholder="Where do they work?" class="form-control" value="<%= @target_person.org_name %>">
+          </div>
+          
+          <!-- Label and input for email -->
+          <div class="form-group">
+            <label for="email" class="control-label">
+              Person
+            </label>
+    
+            <input type="text" id="email" name="email" placeholder="Email Address" class="form-control" value="<%= @target_person.email %>">
+          </div>
+          
+          <!-- Label and input for linkedin_url -->
+          <div class="form-group">
+            <label for="linkedin_url" class="control-label">
+              Person
+            </label>
+    
+            <input type="text" id="linkedin_url" name="linkedin_url" placeholder="LinkedIn Url" class="form-control" value="<%= @target_person.linkedin_url %>">
+          </div>
+    
+          <!-- Label and input for user_id -->
+          <div class="form-group">
+            <label for="user_id" class="control-label">
+              User
+            </label>
+    
+            <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @target_person.user_id %>">
+          </div>
+    
+          <!-- Label and input for Belief -->
+          <div class="form-group">
+            <label for="belief_id" class="control-label">
+              Belief
+            </label>
+            
+            <%= select_tag(:belief_id, options_from_collection_for_select(Belief.all, :id, :body, @target_person.belief_id), :class =>"form-control") %>
+            <!--<input type="text" id="belief_id" name="belief_id" placeholder="Belief" class="form-control" value="<= @target_person.belief_id %>">-->
+          </div>
+    
+          <!-- Label and input for priority_order -->
+          <div class="form-group">
+            <label for="priority_order" class="control-label">
+              Priority order
+            </label>
+    
+            <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<%= @target_person.priority_order %>">
+          </div>
+    
+          <!-- Label and input for rationale -->
+          <div class="form-group">
+            <label for="rationale" class="control-label">
+              Rationale (Notes about why this person can confirm your belief?)
+            </label>
+    
+            <textarea id="rationale" name="rationale" placeholder="Rationale" class="form-control" rows="3"><%= @target_person.rationale %></textarea>
+          </div>
+    
+          <button class="btn btn-success">
+            Create Target Person
+          </button>
+          or
+          <a href="/target_people">Cancel</a>
+        </form>
       </div>
-
-      <!-- Label and input for belief_id -->
-      <div class="form-group">
-        <label for="belief_id" class="control-label">
-          Belief
-        </label>
-
-        <input type="text" id="belief_id" name="belief_id" placeholder="Belief" class="form-control" value="<%= @target_person.belief_id %>">
-      </div>
-
-      <!-- Label and input for priority_order -->
-      <div class="form-group">
-        <label for="priority_order" class="control-label">
-          Priority order
-        </label>
-
-        <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="<%= @target_person.priority_order %>">
-      </div>
-
-      <!-- Label and input for rationale -->
-      <div class="form-group">
-        <label for="rationale" class="control-label">
-          Rationale
-        </label>
-
-        <textarea id="rationale" name="rationale" placeholder="Rationale" class="form-control" rows="3"><%= @target_person.rationale %></textarea>
-      </div>
-
-      <button class="btn btn-success">
-        Create Target Person
-      </button>
-      or
-      <a href="/target_people">Cancel</a>
-    </form>
+    </div>
   </div>
 </div>

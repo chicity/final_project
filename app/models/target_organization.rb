@@ -23,4 +23,6 @@ class TargetOrganization < ApplicationRecord
     
     #VALIDATIONS
     validates :user_id, :org_name, :org_url, presence: true, on: :create
+    validates :position, :numericality => { :only_integer => true, :greater_than_or_equal_to => -100, :less_than_or_equal_to => 100 }
+
 end

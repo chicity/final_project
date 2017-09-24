@@ -1,40 +1,160 @@
 <div class="page-header">
-  <h3>Your Belief for <%=@belief.target_organization.org_name %></h3>
+  <h3>One of the things you believe about... </br><%=@belief.target_organization.org_name %></h3>
 </div>
-
-<div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <!--<dt>User</dt>-->
-      <!--<dd><= @belief.user_id %></dd>-->
-
-      <!--<dt>Org</dt>-->
-      <!--<dd><= @belief.target_organization.org_name %></dd>-->
-
-      <dt>Belief</dt>
-      <dd><%= @belief.body %></dd>
       
-      <dt>Lessons</dt>
-      <dd><%= @belief.lessons %></dd>
-
-      <dt>Priority order</dt>
-      <dd><%= @belief.priority_order %></dd>
-
-      <dt>Confirmed status</dt>
-      <dd><%= @belief.confirmed_status %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/beliefs" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/beliefs/<%= @belief.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_belief/<%= @belief.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+  <div class="row">
+    <div class="col-md-12 mb-2">
+      <dl class="dl-horizontal">
+        <!--<dt>User</dt>-->
+        <!--<dd><= @belief.user_id %></dd>-->
+  
+        <!--<dt>Org</dt>-->
+        <!--<dd><= @belief.target_organization.org_name %></dd>-->
+  
+        <dt>Belief</dt>
+        <dd><%= @belief.body %></dd>
+        
+        <dt>What you've learned</dt>
+        <dd><%= @belief.lessons %></dd>
+  
+        <dt>Priority order</dt>
+        <dd><%= @belief.priority_order %></dd>
+  
+        <dt>Confirmed status</dt>
+        <dd><%= @belief.confirmed_status %></dd>
+  
+      </dl>
+  
+      <div class="btn-group btn-group-justified">
+        <a href="/beliefs" class="btn btn-primary">
+          Back
+        </a>
+        <a href="/beliefs/<%= @belief.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_belief/<%= @belief.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      </div>
     </div>
-  </div>
-</div>
+  </div> <!--end of row 2-->
+
+<!--Here's the start of ADDing a Target_person to a Belief-->
+
+    <h3>
+        Who you think can help you confirm this
+        <!--Here's who you've identified so far -->
+        <!--People for <= @belief.target_organization.org_name %>-->
+    </h3>
+    <ul>
+      <% @belief.target_person.each do |person| %>
+      <li><a href="/target_people/<%= person.id%>"><%= person.first_name%> <%= person.last_name%></a></li>
+      <% end%>
+    </ul>
+
+
+    <h4>
+      Who else could confirm this?
+      <!--Add a New Target Person -->
+      <!--for <= @belief.body %>-->
+    </h4>
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_belief" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Label and input for user_id -->
+            <div class="form-group">
+              <!--<label for="user_id" class="control-label">-->
+              <!--  User id-->
+              <!--</label>-->
+      
+              <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+            </div>
+      
+            <!-- Label and input for first_name -->
+            <div class="form-group">
+              <label for="first_name" class="control-label">
+                First Name
+              </label>
+      
+              <input type="text" id="first_name" name="first_name" placeholder="First Name" class="form-control">
+            </div>
+            
+            <!-- Label and input for last_name -->
+            <div class="form-group">
+              <label for="last_name" class="control-label">
+                Last Name
+              </label>
+      
+              <input type="text" id="last_name" name="last_name" placeholder="Last Name" class="form-control">
+            </div>
+            
+            <!-- Label and input for org_name -->
+            <div class="form-group">
+              <label for="org_name" class="control-label">
+                Where do they work
+              </label>
+      
+              <input type="text" id="org_name" name="org_name" placeholder="Organization name" class="form-control">
+            </div>
+            
+            <!-- Label and input for email -->
+            <div class="form-group">
+              <label for="email" class="control-label">
+                Email Address
+              </label>
+      
+              <input type="text" id="email" name="email" placeholder="Where can you reach them?" class="form-control">
+            </div>
+            
+            <!-- Label and input for linkedin_url -->
+            <div class="form-group">
+              <label for="linkedin_url" class="control-label">
+                LinkedIN Profile
+              </label>
+      
+              <input type="text" id="linkedin_url" name="linkedin_url" placeholder="www.linkedIN.com/..." class="form-control">
+            </div>
+      
+            <!-- Label and input for belief_id -->
+            <div class="form-group">
+              <!--<label for="belief_id" class="control-label">-->
+              <!--  Belief-->
+              <!--</label>-->
+      
+              <input type="hidden" id="belief_id" name="belief_id" placeholder="Belief" class="form-control" value="<%= @belief.id %>">
+            </div>
+      
+            <!-- Label and input for priority_order-->
+            <div class="form-group">
+              <label for="priority_order" class="control-label">
+                How certain are you that this person can confirm your belief? (higher is more important -100 to 100)
+              </label>
+      
+              <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control" value="0">
+              <!-- <input type="text" id="priority_order" name="priority_order" placeholder="Priority order" class="form-control> -->
+
+            </div>
+    
+            <!-- Label and input for rationale -->
+            <div class="form-group">
+              <label for="rationale" class="control-label">
+                Rationale (Why can this person confirm your belief?)
+              </label>
+
+              <textarea id="rationale" name="rationale" placeholder="Rationale" class="form-control" rows="3"></textarea>
+            </div>
+      
+            <button class="btn btn-success">
+              Create Belief
+            </button>
+            or
+            <a href="/beliefs">Cancel</a>
+          </form>
+
+
+      
+        </div>
+      </div> <!--end of row 2-->
