@@ -80,3 +80,6 @@ gem 'pqueue', '~> 2.1'
 
 gem 'acts_as_list'
 # above for assigning order and giving changes to items in the list // https://github.com/swanandp/acts_as_list
+
+gem 'seed_dump'
+# enables command: "rake db:seed:dump" which enablse you to rails db: seed the data from your development environ when you clone
